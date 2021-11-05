@@ -10,7 +10,7 @@ from decouple import config
 def home_page_view(request):
     return HttpResponse("<a href='https://www.dropbox.com/s/px5wb0crgdt6tfu/Why%20dogebonk%20can%20only%20rug%20upwards.pdf?dl=0'>Why dogebonk is decentralized (report)</a><br><br>"
                         "Call http://dobo.party/api/bonked-coin/?ticker=TICKER to get an image of the coin being bonked. <br>"
-                        "For example, for SHIBA call <a href='http://dobo.party/api/bonked-coin/?ticker=SHIB'>http://dobo.party/api/bonked-coin/?ticker=SHIB</a> <br><br>"
+                        "For example, for SHIBA call <a href='http://dobo.party/api/bonked-coin?ticker=SHIB'>http://dobo.party/api/bonked-coin?ticker=SHIB</a> <br><br>"
                         "Contributions welcome: <a href='http://github.com/bonkscientist'>https://github.com/bonkscientist</a>")
 
 
@@ -19,7 +19,7 @@ def bonked_coin(request):
         ticker = request.GET['ticker']
     except:
         return HttpResponse("MISSING TICKER!! <br><br>" + "Call http://dobo.party/api/bonked-coin/?ticker=TICKER to get an image of the coin being bonked. <br>"
-                        "For example, for SHIBA call <a href='http://dobo.party/api/bonked-coin/?ticker=SHIB'>http://dobo.party/api/bonked-coin/?ticker=SHIB</a> <br><br>")
+                        "For example, for SHIBA call <a href='http://dobo.party/api/bonked-coin?ticker=SHIB'>http://dobo.party/api/bonked-coin?ticker=SHIB</a> <br><br>")
 
     if  os.path.isfile('dobo_party/images/bonked_' + ticker + '.png'):
         return serve_image(ticker)
